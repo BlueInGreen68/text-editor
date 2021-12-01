@@ -1,0 +1,174 @@
+* {
+    box-sizing: border-box;
+}
+
+.\|\|general {
+    color: #b531b5;
+}
+
+.\|\|brackets {
+    color: orange;
+}
+
+.\|\|functions {
+    color: #9393d4;
+}
+
+.\|\|strings {
+    color: #6bd46b;
+}
+
+.\|\|tags {
+    color: #d45656;
+}
+
+.\|\|lesserOrGreaterBrackets {
+    color: #77bdc1;
+}
+
+.\|\|innerBrackets {
+    color: #d26e6e;
+}
+
+.\|\|attributes {
+    color: #ffeba0;
+}
+
+.\|\|selectors {
+    color: grey;
+}
+
+.\|\|numbers {
+    color: lightcoral;
+}
+
+.\|\|comments {
+    color: #777;
+}
+
+[data-editor], [data-highlights] {
+    white-space: pre-wrap;
+    min-height: 100%;
+}
+
+[data-editor] {
+    color: transparent;
+    caret-color: #111;
+    z-index: 10;
+    position: sticky;
+    outline: none;
+    width: 100%;
+}
+
+[data-highlights] {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: inherit;
+}
+
+[data-adviser] {
+    background: rgba(14, 125, 217, 0.5);
+    position: fixed;
+    bottom: unset;
+    right: unset;
+    padding: 0;
+}
+
+[data-adviser]:empty, [data-adviser] > a:nth-child(1n + 7) {
+    display: none;
+}
+
+[data-adviser] > a {
+    width: 100%;
+    padding: 5px;
+    display: block;
+    font-weight: normal;
+}
+
+[data-adviser] > a[data-active] {
+    position: relative;
+}
+
+[data-adviser] > a[data-active]::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #fff;
+    opacity: 0.2;
+}
+
+.main__header {
+    font-size: 0.8rem;
+}
+
+.header {
+    width: 100%;
+    background-color: #fff;
+}
+
+.header__list {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.list {
+    width: 100%;
+    display: flex;
+    margin: 0;
+}
+
+.list__item {
+    padding: 0.1rem 0.3rem;
+    position: relative;
+    cursor: pointer;
+}
+
+.list__item:hover {
+    background-color: #0e7dd9;
+}
+
+.list-item__label {
+}
+
+.list-item__menu {
+    position: absolute;
+    opacity: 0;
+}
+
+.menu {
+}
+
+.menu__option {
+    background-color: #ffffff;
+    color: #111;
+}
+
+.header__tabs {
+    margin-top: 0.5rem;
+    font-size: 1rem;
+}
+
+.tabs__tab_active {
+    border-bottom: 3px solid #2865cb;
+    background-color: #fff;
+}
+
+.tabs {
+    display: flex;
+}
+
+.tab {
+    padding: 0.7rem;
+    color: #111;
+    cursor: pointer;
+}
+
+.tabs__tab {
+
+}
