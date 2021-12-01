@@ -1,11 +1,106 @@
-.main {
-    font-size: 16px;
-    width: 100vw;
-    height: 100vh;
-    font-family: Roboto, serif;
-    background-color: #282c34;
-    color: #fff;
-    overflow: hidden;
+* {
+    box-sizing: border-box;
+}
+
+.\|\|general {
+    color: #b531b5;
+}
+
+.\|\|brackets {
+    color: orange;
+}
+
+.\|\|functions {
+    color: #9393d4;
+}
+
+.\|\|strings {
+    color: #6bd46b;
+}
+
+.\|\|tags {
+    color: #d45656;
+}
+
+.\|\|lesserOrGreaterBrackets {
+    color: #77bdc1;
+}
+
+.\|\|innerBrackets {
+    color: #d26e6e;
+}
+
+.\|\|attributes {
+    color: #ffeba0;
+}
+
+.\|\|selectors {
+    color: grey;
+}
+
+.\|\|numbers {
+    color: lightcoral;
+}
+
+.\|\|comments {
+    color: #777;
+}
+
+[data-editor], [data-highlights] {
+    white-space: pre-wrap;
+    min-height: 100%;
+}
+
+[data-editor] {
+    color: transparent;
+    caret-color: #111;
+    z-index: 10;
+    position: sticky;
+    outline: none;
+    width: 100%;
+}
+
+[data-highlights] {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: inherit;
+}
+
+[data-adviser] {
+    background: rgba(14, 125, 217, 0.5);
+    position: fixed;
+    bottom: unset;
+    right: unset;
+    padding: 0;
+}
+
+[data-adviser]:empty, [data-adviser] > a:nth-child(1n + 7) {
+    display: none;
+}
+
+[data-adviser] > a {
+    width: 100%;
+    padding: 5px;
+    display: block;
+    font-weight: normal;
+}
+
+[data-adviser] > a[data-active] {
+    position: relative;
+}
+
+[data-adviser] > a[data-active]::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #fff;
+    opacity: 0.2;
 }
 
 .main__header {
@@ -14,7 +109,7 @@
 
 .header {
     width: 100%;
-    background-color: #282c34;
+    background-color: #fff;
 }
 
 .header__list {
@@ -50,8 +145,8 @@
 }
 
 .menu__option {
-    background-color: #282c34;
-    color: #fff;
+    background-color: #ffffff;
+    color: #111;
 }
 
 .header__tabs {
@@ -61,7 +156,7 @@
 
 .tabs__tab_active {
     border-bottom: 3px solid #2865cb;
-    background-color: #383e48;
+    background-color: #fff;
 }
 
 .tabs {
@@ -70,47 +165,10 @@
 
 .tab {
     padding: 0.7rem;
-    color: #de9c5c;
+    color: #111;
     cursor: pointer;
 }
 
 .tabs__tab {
 
-}
-
-.code-editor {
-    width: 100%;
-    height: 100%;
-    display: flex
-}
-
-.code-editor__text {
-    border-left: 10px solid #90b758;
-    height: 100%;
-    width: 50%;
-}
-
-.text {
-}
-
-.text__input {
-    width: 100%;
-    height: 100%;
-    background-color: #282c34;
-    border: none;
-    outline: none;
-    color: #fff;
-}
-
-.text__input:active {
-    border: none;
-
-}
-.focusColor:focus {
-    background-color: #000000;
-}
-
-.code-editor__debug {
-    background: #fff;
-    width: 50%;
 }

@@ -1,56 +1,69 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
+	<head>
+		<title>Редактор</title>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/fonts.css">
-    <title>text-editor</title>
-</head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="css/style.css">
+		<style>
+			body {
+				position: fixed;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				display: flex;
+				flex-wrap: wrap;
+				font-family: monospace;
+				background: #ffffff;
+				margin: 0;
+			}
 
-<body>
-<main class="main">
-    <header class="main__header header">
-        <ul class="header__list list">
-            <li class="list__item list-item">
-                <select name="File" id="File" class="list-item__menu menu">
-                    <option class="menu__option">Новый</option>
-                    <option class="menu__option">Сохранить</option>
-                    <option class="menu__option">Открыть</option>
-                </select>
-                <label for="File" class="list-item__label">Файл</label>
-            </li>
-            <li class="list__item list-item">
-                <select name="Help" id="Help" class="list-item__menu menu">
-                    <option class="menu__option">О программе</option>
-                    <option class="menu__option">Об авторе</option>
-                </select>
-                <label for="Help" class="list-item__label">Помощь</label>
-            </li>
-        </ul>
-        <section class="header__tabs tabs">
-            <div class="tabs__tab tab tabs__tab_active">index.html</div>
-            <div class="tabs__tab tab">index.html</div>
+			.editor {
+				height: 100vh;
+				width: 100vw;
+				background: #ffffff;
+				display: block;
+				position: relative;
+				padding: 25px;
+				font-size: 16px;
+				color: #111;
+			}
+		</style>
+	</head>
 
-        </section>
-    </header>
-    <section class="code-editor">
-        <div class="code-editor__text text">
-            <div contenteditable="true" class="text__input">
-                <p tabindex="1" class="focusColor focused">line1</p>
-                <p tabindex="2" class="focusColor">line2</p>
-                <p tabindex="3" class="focusColor">line3</p>
-            </div>
-        </div>
-        <div class="code-editor__debug">
+	<body>
+	<header class="main__header header">
+		<ul class="header__list list">
+			<li class="list__item list-item">
+				<select name="File" id="File" class="list-item__menu menu">
+					<option class="menu__option">Новый</option>
+					<option class="menu__option">Сохранить</option>
+					<option class="menu__option">Открыть</option>
+				</select>
+				<label for="File" class="list-item__label">Файл</label>
+			</li>
+			<li class="list__item list-item">
+				<select name="Help" id="Help" class="list-item__menu menu">
+					<option class="menu__option">О программе</option>
+					<option class="menu__option">Об авторе</option>
+				</select>
+				<label for="Help" class="list-item__label">Помощь</label>
+			</li>
+		</ul>
+		<section class="header__tabs tabs">
+			<div class="tabs__tab tab tabs__tab_active">index.html</div>
+			<div class="tabs__tab tab">index.html</div>
 
-        </div>
-    </section>
-</main>
-<script src="js/script.js"></script>
-</body>
+		</section>
+	</header>
+		<div class="editor" data-oncodejs>Ah, here belongs JavaScript? Is it like Java?</div>
 
+		<script src="oncode.js"></script>
+		<script>
+			const jsEditor = new OnCode(document.querySelector("[data-oncodejs]"), "js");
+			const htmlEditor = new OnCode(document.querySelector("[data-oncodehtml]"), "html");
+		</script>
+	</body>
 </html>
