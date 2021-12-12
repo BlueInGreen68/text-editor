@@ -1,3 +1,6 @@
+// @ts-nocheck
+import {saveAs} from "file-saver";
+
 interface Languages {
     [key: string]: Language
 }
@@ -113,11 +116,12 @@ const languages: Languages = {
     }
 };
 
-class OnCode {
+class Editor {
     private readonly base: HTMLElement;
     private readonly editor: HTMLElement;
     private readonly highlights: HTMLElement;
     private readonly adviser: HTMLElement;
+    private readonly fileContextMenu: HTMLElement;
     private readonly initialHTML: string;
     private readonly tabCharacter: string = "\u00a0\u00a0\u00a0\u00a0";
     private readonly language: "js" | "html" | "css";
@@ -125,7 +129,7 @@ class OnCode {
     private openedAdviserByInteraction: boolean;
     private currentTabOffset: number;
 
-    constructor(base: HTMLElement, language: "js" | "html" | "css") {
+    constructor(base?: HTMLElement, language: "js" | "html" | "css") {
         this.base = base;
         this.initialHTML = this.base.innerHTML;
         this.language = language;
@@ -155,9 +159,12 @@ class OnCode {
         setInterval(() => {
             this.setOffset();
         }, 250);
-        this.editor.addEventListener("keyup", this.handleAdviserBehavior.bind(this), true);
+        this.editor.addEventListener("keyup", (this.handleAdviserBehavior.bind(this)), true);
         this.base.addEventListener("keydown", this.handleKeys.bind(this), true);
+        this.fileContextMenu = document.getElementById("File");
+        this.fileContextMenu.addEventListener("change", () => this.selectFileContextMenu());
     }
+
 
     private unCode(): void {
         this.base.innerHTML = this.initialHTML;
@@ -310,7 +317,8 @@ class OnCode {
         languages[this.language].colors.map((colorInformation: { regex, class }): void => {
             const replacement: string = colorInformation.regex.replacement || "$1";
 
-            editorHTML = editorHTML.replace(new RegExp(colorInformation.regex.string, colorInformation.regex.flags), `<span class="${colorInformation.class}">${replacement}</span>`);
+            editorHTML = editorHTML.replace(new RegExp(colorInformation.regex.string, colorInformation.regex.flags),
+                `<span class="${colorInformation.class}">${replacement}</span>`);
         });
 
         this.highlights.innerHTML = `${editorHTML}`;
@@ -573,6 +581,30 @@ class OnCode {
 
         this.currentTabOffset = offset.match(/\s{4}/g) ? offset.match(/\s{4}/g).length : 0;
     }
+
+    private saveFileAs(): void {
+        var blob = new Blob([this.getCode()], {type: "text/plain;charset=utf-8"});
+        saveAs(blob, "script.js");
+    }
+
+    private createFile(): void {
+    }
+
+    private openFile(): void {
+    }
+
+    private selectFileContextMenu(): void {
+        switch (this.fileContextMenu.value) {
+            case "Новый":
+                this.createFile();
+                break
+            case "Сохранить":
+                this.saveFileAs();
+                break
+            case "Открыть":
+                this.openFile();
+        }
+    }
 }
 
-c
+new Editor(document.querySelector("[data-oncodejs]"), "js");
