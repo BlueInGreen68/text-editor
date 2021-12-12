@@ -1,39 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<title>Редактор</title>
 
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" href="css/style.css">
-		<style>
-			body {
-				position: fixed;
-				top: 0;
-				left: 0;
-				right: 0;
-				bottom: 0;
-				display: flex;
-				flex-wrap: wrap;
-				font-family: monospace;
-				background: #ffffff;
-				margin: 0;
-			}
+<head>
+	<title>Редактор</title>
 
-			.editor {
-				height: 100vh;
-				width: 100vw;
-				background: #ffffff;
-				display: block;
-				position: relative;
-				padding: 25px;
-				font-size: 16px;
-				color: #111;
-			}
-		</style>
-	</head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="css/style.css">
+	<style>
+		body {
+			position: fixed;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			display: flex;
+			flex-wrap: wrap;
+			font-family: monospace;
+			background: #ffffff;
+			margin: 0;
+		}
 
-	<body>
+		.editor {
+			height: 100vh;
+			width: 100vw;
+			background: #ffffff;
+			display: block;
+			position: relative;
+			padding: 25px;
+			font-size: 16px;
+			color: #111;
+		}
+	</style>
+</head>
+
+<body>
 	<header class="main__header header">
 		<ul class="header__list list">
 			<li class="list__item list-item">
@@ -52,18 +53,10 @@
 				<label for="Help" class="list-item__label">Помощь</label>
 			</li>
 		</ul>
-		<section class="header__tabs tabs">
-			<div class="tabs__tab tab tabs__tab_active">index.html</div>
-			<div class="tabs__tab tab">index.html</div>
-
-		</section>
 	</header>
-		<div class="editor" data-oncodejs>Ah, here belongs JavaScript? Is it like Java?</div>
+	<div class="editor" data-oncodejs>Ah, here belongs JavaScript? Is it like Java?</div>
+	<script src="./editor.js"></script>
+<!--	<script src="script.js"></script>-->
+</body>
 
-		<script src="oncode.js"></script>
-		<script>
-			const jsEditor = new OnCode(document.querySelector("[data-oncodejs]"), "js");
-			const htmlEditor = new OnCode(document.querySelector("[data-oncodehtml]"), "html");
-		</script>
-	</body>
 </html>
