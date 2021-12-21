@@ -1,5 +1,5 @@
 // @ts-nocheck
-import {saveAs} from "file-saver";
+import { saveAs } from "file-saver";
 
 interface Languages {
     [key: string]: Language
@@ -28,31 +28,31 @@ const languages: Languages = {
                 class: "||general"
             },
             {
-                regex: {string: "('(([a-zA-Z\\.,!\"§$%&/()-=?\\[\\]#`_ ])*?)')", flags: "gi",},
+                regex: { string: "('(([a-zA-Z\\.,!\"§$%&/()-=?\\[\\]#`_ ])*?)')", flags: "gi", },
                 class: "||strings"
             },
             {
-                regex: {string: "(`([a-zA-Z\\.,!\"§$%&/()-=?\\[\\]#`_ ]*?)`)", flags: "gi",},
+                regex: { string: "(`([a-zA-Z\\.,!\"§$%&/()-=?\\[\\]#`_ ]*?)`)", flags: "gi", },
                 class: "||strings"
             },
             {
-                regex: {string: "(\"([a-zA-Z\\.,!\"§$%&/()-=?\\[\\]#`_ ]*?)\")", flags: "gi",},
+                regex: { string: "(\"([a-zA-Z\\.,!\"§$%&/()-=?\\[\\]#`_ ]*?)\")", flags: "gi", },
                 class: "||strings"
             },
             {
-                regex: {string: "((\\.([a-zA-Z0-9]*))\\()", flags: "gi",},
+                regex: { string: "((\\.([a-zA-Z0-9]*))\\()", flags: "gi", },
                 class: "||functions"
             },
             {
-                regex: {string: "([\\(\\)])", flags: "gi",},
+                regex: { string: "([\\(\\)])", flags: "gi", },
                 class: "||functions"
             },
             {
-                regex: {string: "([{}\\[\\]])", flags: "g",},
+                regex: { string: "([{}\\[\\]])", flags: "g", },
                 class: "||brackets"
             },
             {
-                regex: {string: "(\\/\\*((.|\\n|\\r)*)\\*\\/|\\/\\/(.*))", flags: "g",},
+                regex: { string: "(\\/\\*((.|\\n|\\r)*)\\*\\/|\\/\\/(.*))", flags: "g", },
                 class: "||comments"
             }],
         suggestions: [
@@ -69,36 +69,36 @@ const languages: Languages = {
     },
     html: {
         colors: [{
-            regex: {string: "([a-z]*=(.*?)(?=&gt;))", flags: "g",},
+            regex: { string: "([a-z]*=(.*?)(?=&gt;))", flags: "g", },
             class: "||attributes"
         },
-            {
-                regex: {string: "(&lt;(\/|)[a-zA-Z0-9]*)", flags: "g"},
-                class: "||innerBrackets"
-            },
-            {
-                regex: {string: "(&gt;)", flags: "g",},
-                class: "||lesserOrGreaterBrackets"
-            },
-            {
-                regex: {string: "(&lt;)", flags: "g",},
-                class: "||lesserOrGreaterBrackets"
-            }],
+        {
+            regex: { string: "(&lt;(\/|)[a-zA-Z0-9]*)", flags: "g" },
+            class: "||innerBrackets"
+        },
+        {
+            regex: { string: "(&gt;)", flags: "g", },
+            class: "||lesserOrGreaterBrackets"
+        },
+        {
+            regex: { string: "(&lt;)", flags: "g", },
+            class: "||lesserOrGreaterBrackets"
+        }],
         suggestions: ["a", "abbr", "acronym", "address", "applet", "area", "article", "aside", "audio", "b", "base", "basefont", "bdi", "bdo", "big", "blockquote", "body", "br", "button", "canvas", "caption", "center", "cite", "code", "col", "colgroup", "data", "datalist", "dd", "del", "details", "dfn", "dialog", "dir", "div", "dl", "dt", "em", "embed", "fieldset", "figcaption", "figure", "font", "footer", "form", "frame", "frameset", "h1 to h6", "head", "header", "hr", "html", "i", "iframe", "img", "input", "ins", "kbd", "label", "legend", "li", "link", "main", "map", "mark", "meta", "meter", "nav", "noframes", "noscript", "object", "ol", "optgroup", "option", "output", "p", "param", "picture", "pre", "progress", "q", "rp", "rt", "ruby", "s", "samp", "script", "section", "select", "small", "source", "span", "strike", "strong", "style", "sub", "summary", "sup", "svg", "table", "tbody", "td", "template", "textarea", "tfoot", "th", "thead", "time", "title", "tr", "track", "tt", "u", "ul", "var", "video", "wbr", "accept", "accept-charset", "accesskey", "action", "align", "alt", "async", "autocomplete", "autofocus", "autoplay", "autosave", "bgcolor", "border", "buffered", "challenge", "charset", "checked", "cite", "class", "code", "codebase", "color", "cols", "colspan", "content", "contenteditable", "contextmenu", "controls", "coords", "crossorigin", "data", "data-*", "datetime", "default", "defer", "dir", "dirname", "disabled", "download", "draggable", "dropzone", "enctype", "for", "form", "formaction", "headers", "height", "hidden", "high", "href", "hreflang", "http-equiv", "icon", "id", "integrity", "ismap", "itemprop", "keytype", "kind", "label", "lang", "language", "list", "loop", "low", "manifest", "max", "maxlength", "media", "method", "min", "multiple", "muted", "name", "novalidate", "open", "optimum", "pattern", "ping", "placeholder", "poster", "preload", "radiogroup", "readonly", "rel", "required", "reversed", "rows", "rowspan", "sandbox", "scope", "scoped", "seamless", "selected", "shape", "size", "sizes", "slot", "span", "spellcheck", "src", "srcdoc", "srclang", "srcset", "start", "step", "style", "summary", "tabindex", "target", "title", "type", "value", "width", "wrap"]
     },
     css: {
         colors: [{
-            regex: {string: "([{}])", flags: "g",},
+            regex: { string: "([{}])", flags: "g", },
             class: "||brackets"
         },
-            {
-                regex: {string: "([a-zA-Z0-9-]*:)", flags: "g",},
-                class: "||selectors"
-            },
-            {
-                regex: {string: "(#[a-zA-Z0-9]*)(?=(;| |\\r|\\n))", flags: "g",},
-                class: "||numbers"
-            }],
+        {
+            regex: { string: "([a-zA-Z0-9-]*:)", flags: "g", },
+            class: "||selectors"
+        },
+        {
+            regex: { string: "(#[a-zA-Z0-9]*)(?=(;| |\\r|\\n))", flags: "g", },
+            class: "||numbers"
+        }],
         suggestions: ["align-content", "align-items", "align-self", "all", "animation", "animation-delay", "animation-direction", "animation-duration",
             "animation-fill-mode", "animation-iteration-count", "animation-name", "animation-play-state", "animation-timing-function", "backface-visibility",
             "background", "background-attachment", "background-blend-mode", "background-clip", "background-color", "background-image", "background-origin",
@@ -117,6 +117,8 @@ const languages: Languages = {
 };
 
 class Editor {
+    private modalOverlay: HTMLElement;
+    private createModal: HTMLElement;
     private readonly base: HTMLElement;
     private readonly editor: HTMLElement;
     private readonly highlights: HTMLElement;
@@ -162,7 +164,11 @@ class Editor {
         this.editor.addEventListener("keyup", (this.handleAdviserBehavior.bind(this)), true);
         this.base.addEventListener("keydown", this.handleKeys.bind(this), true);
         this.fileContextMenu = document.getElementById("File");
+        this.fileContextMenu.value = null;
         this.fileContextMenu.addEventListener("change", () => this.selectFileContextMenu());
+        this.createModal = document.querySelector(".modal");
+        this.modalOverlay = document.querySelector(".form__exit");
+        this.modalOverlay.addEventListener("click", () => this.closeCreateModal);
     }
 
 
@@ -247,7 +253,7 @@ class Editor {
         }, 10);
     }
 
-    private showSuggestions({askedForSuggestions = true} = {}): void {
+    private showSuggestions({ askedForSuggestions = true } = {}): void {
         this.isAdviserOpen = false;
         this.openedAdviserByInteraction = askedForSuggestions;
 
@@ -275,7 +281,7 @@ class Editor {
         this.adviser.querySelector("a")?.setAttribute("data-active", "");
     }
 
-    private getCharactersBeforeCursor({escapeElementTags = false}: { escapeElementTags?: boolean } = {}): string | undefined {
+    private getCharactersBeforeCursor({ escapeElementTags = false }: { escapeElementTags?: boolean } = {}): string | undefined {
         try {
             return escapeElementTags
                 ? window.getSelection().getRangeAt(0).startContainer.textContent.substring(0, window.getSelection().getRangeAt(0).startOffset + 1).replace(/</g, "&lt;").replace(/>/g, "&gt;")
@@ -326,7 +332,7 @@ class Editor {
 
     private handleAdviserBehavior(e: KeyboardEvent): void {
         if (e.code.includes("Key") && !e.ctrlKey) {
-            this.showSuggestions({askedForSuggestions: false});
+            this.showSuggestions({ askedForSuggestions: false });
         } else if (!this.openedAdviserByInteraction && e.code !== "ArrowDown" && e.code !== "ArrowUp") {
             this.adviser.innerHTML = "";
             this.isAdviserOpen = false;
@@ -570,7 +576,7 @@ class Editor {
     private setOffset(): void {
         if (!this.getCharactersBeforeCursor()) return;
 
-        const escapedCharactersBeforeCursor: string = this.getCharactersBeforeCursor({escapeElementTags: true}).replace(/([()\[\]"'`])/g, "\\$1");
+        const escapedCharactersBeforeCursor: string = this.getCharactersBeforeCursor({ escapeElementTags: true }).replace(/([()\[\]"'`])/g, "\\$1");
         const offset: string = !this.getCharactersBeforeCursor().startsWith("\n") && !this.getCharactersBeforeCursor().match("&nbsp;") && this.editor.innerHTML.match(new RegExp(`\n(.*)${escapedCharactersBeforeCursor}`))
             ? this.editor.innerHTML.match(new RegExp(`\n(.*)${escapedCharactersBeforeCursor}`))[0].replace(/&nbsp;/g, " ")
             : this.getCharactersBeforeCursor().match("\n") && !this.getCharactersBeforeCursor().endsWith("\n")
@@ -583,26 +589,42 @@ class Editor {
     }
 
     private saveFileAs(): void {
-        var blob = new Blob([this.getCode()], {type: "text/plain;charset=utf-8"});
+        var blob = new Blob([this.getCode()], { type: "text/plain;charset=utf-8" });
         saveAs(blob, "script.js");
     }
 
     private createFile(): void {
+        this.openCreateModal();
+    }
+
+    private openCreateModal(): void {
+        document.querySelector(".modal").classList.add("show");
+    }
+
+    private closeCreateModal(): void {
+        this.createModal.classList.remove("show");
     }
 
     private openFile(): void {
+
     }
 
     private selectFileContextMenu(): void {
         switch (this.fileContextMenu.value) {
-            case "Новый":
+            case "new": {
                 this.createFile();
+                this.fileContextMenu.value = null;
+            }
                 break
-            case "Сохранить":
+            case "save": {
                 this.saveFileAs();
+                this.fileContextMenu.value = null;
+            }
                 break
-            case "Открыть":
+            case "open": {
                 this.openFile();
+                this.fileContextMenu.value = null;
+            }
         }
     }
 }

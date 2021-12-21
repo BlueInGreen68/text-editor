@@ -39,24 +39,55 @@
 		<ul class="header__list list">
 			<li class="list__item list-item">
 				<select name="File" id="File" class="list-item__menu menu">
-					<option class="menu__option">Новый</option>
-					<option class="menu__option">Сохранить</option>
-					<option class="menu__option">Открыть</option>
+					<option class="menu__option" value="new">Новый</option>
+					<option class="menu__option" value="save">Сохранить</option>
+					<option class="menu__option" value="open">Открыть</option>
 				</select>
 				<label for="File" class="list-item__label">Файл</label>
 			</li>
 			<li class="list__item list-item">
 				<select name="Help" id="Help" class="list-item__menu menu">
-					<option class="menu__option">О программе</option>
-					<option class="menu__option">Об авторе</option>
+					<option class="menu__option" value="about-program">О программе</option>
+					<option class="menu__option" value="about-author">Об авторе</option>
 				</select>
 				<label for="Help" class="list-item__label">Помощь</label>
 			</li>
 		</ul>
 	</header>
 	<div class="editor" data-oncodejs>Ah, here belongs JavaScript? Is it like Java?</div>
-	<script src="./editor.js"></script>
-<!--	<script src="script.js"></script>-->
+
+	<!-- Модальное окно "Новый" -->
+	<div id="modalWin" class="modal">
+		<form action="" class="form">
+			<fieldset class="form__area">
+				<legend class="form__legend">Выберите расширение нового файла:</legend>
+				<ul class="form__list">
+					<li class="menu__item">
+						<label for="title_1">
+							<input type="radio" id="title_1" name="title" value="H">
+							HTML
+						</label>
+					</li>
+					<li class="menu__item">
+						<label for="title_2">
+							<input type="radio" id="title_2" name="title" value="C">
+							CSS
+						</label>
+					</li>
+					<li class="menu__item">
+						<label for="title_3">
+							<input type="radio" id="title_3" name="title" value="J">
+							JS
+						</label>
+					</li>
+				</ul>
+				<button class="form__accept">OK</button>
+				<button class="form__exit">X</button>
+			</fieldset>
+		</form>
+	</div>
+	<script src="editor.js"></script>
+	<!--	<script src="script.js"></script>-->
 </body>
 
 </html>
