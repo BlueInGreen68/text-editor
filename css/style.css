@@ -211,6 +211,15 @@
     background-color: white;
 }
 
+.error {
+    color: red;
+    display: none;
+}
+
+.error--visible {
+    display: inline;
+}
+
 .menu__item {
     list-style: none;
 }

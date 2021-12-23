@@ -116,14 +116,11 @@ const languages: Languages = {
     }
 };
 
-class Editor {
-    private modalOverlay: HTMLElement;
-    private createModal: HTMLElement;
+export default class Editor {
     private readonly base: HTMLElement;
     private readonly editor: HTMLElement;
     private readonly highlights: HTMLElement;
     private readonly adviser: HTMLElement;
-    private readonly fileContextMenu: HTMLElement;
     private readonly initialHTML: string;
     private readonly tabCharacter: string = "\u00a0\u00a0\u00a0\u00a0";
     private readonly language: "js" | "html" | "css";
@@ -163,12 +160,6 @@ class Editor {
         }, 250);
         this.editor.addEventListener("keyup", (this.handleAdviserBehavior.bind(this)), true);
         this.base.addEventListener("keydown", this.handleKeys.bind(this), true);
-        this.fileContextMenu = document.getElementById("File");
-        this.fileContextMenu.value = null;
-        this.fileContextMenu.addEventListener("change", () => this.selectFileContextMenu());
-        this.createModal = document.querySelector(".modal");
-        this.modalOverlay = document.querySelector(".form__exit");
-        this.modalOverlay.addEventListener("click", () => this.closeCreateModal);
     }
 
 
@@ -588,45 +579,5 @@ class Editor {
         this.currentTabOffset = offset.match(/\s{4}/g) ? offset.match(/\s{4}/g).length : 0;
     }
 
-    private saveFileAs(): void {
-        var blob = new Blob([this.getCode()], { type: "text/plain;charset=utf-8" });
-        saveAs(blob, "script.js");
-    }
-
-    private createFile(): void {
-        this.openCreateModal();
-    }
-
-    private openCreateModal(): void {
-        document.querySelector(".modal").classList.add("show");
-    }
-
-    private closeCreateModal(): void {
-        this.createModal.classList.remove("show");
-    }
-
-    private openFile(): void {
-
-    }
-
-    private selectFileContextMenu(): void {
-        switch (this.fileContextMenu.value) {
-            case "new": {
-                this.createFile();
-                this.fileContextMenu.value = null;
-            }
-                break
-            case "save": {
-                this.saveFileAs();
-                this.fileContextMenu.value = null;
-            }
-                break
-            case "open": {
-                this.openFile();
-                this.fileContextMenu.value = null;
-            }
-        }
-    }
 }
 
-new Editor(document.querySelector("[data-oncodejs]"), "js");
