@@ -3,6 +3,11 @@ import File from './File'
 import Editor from './Editor'
 import {saveAs} from "file-saver";
 
+interface File {
+  isActive: boolean,
+  editor: Editor,
+}
+
 export default class Menu {
   private modalOverlay: HTMLElement;
   private createModal: HTMLElement;
@@ -11,24 +16,39 @@ export default class Menu {
   private fileNameElement: HTMLElement;
   private fileType: string;
   private fileTypeElement: HTMLElement;
-  private editor: Editor;
+  private files: File[] = [];
   private readonly fileContextMenu: HTMLElement;
 
-  constructor(editor: Editor) {
+  constructor() {
     this.fileContextMenu = document.getElementById("File");
     this.fileContextMenu.value = null;
     this.modalForm = document.getElementById("modalForm");
     this.fileContextMenu.addEventListener("change", () => this.selectFileContextMenu());
     this.createModal = document.querySelector(".modal");
     this.modalOverlay = document.querySelector(".form__exit");
-    this.editor = editor
+    this.modalOverlay.addEventListener("click", ()=>{
+      this.closeCreateModal()
+    })
     this.modalForm.addEventListener('submit', (event) => {
       event.preventDefault();
       const formData = new FormData(modalForm);
       this.fileType = formData.get('fileType');
       this.fileName = formData.get('fileName');
       if (this.fileName.length > 0) {
-        new File(this.fileName, this.fileType);
+        const newFile = new File(this.fileName, this.fileType)
+        newFile.tab.tabElement.addEventListener('click', () => {
+          newFile.editor.selectEditor()
+          newFile.tab.selectTab()
+        })
+        this.files.map((file) => {
+          file.isActive = false;
+        })
+        this.files.push({isActive: true, file: newFile});
+        this.files.map((fileElement) => {
+          if (fileElement.isActive) {
+            this.selectFile(fileElement);
+          }
+        })
         this.closeCreateModal();
       } else {
         document.getElementById('error').classList.add('error--visible')
@@ -36,9 +56,19 @@ export default class Menu {
     });
   }
 
+  private selectFile(fileElement): void {
+    fileElement.file.editor.selectEditor();
+    fileElement.file.tab.selectTab();
+  }
+
   private saveFileAs(): void {
-    var blob = new Blob([this.editor.getCode()], {type: "text/plain;charset=utf-8"});
-    saveAs(blob, "script.js");
+    this.files.map((fileElement) => {
+      console.log(fileElement)
+      if (fileElement.isActive) {
+        var blob = new Blob([fileElement.file.editor.getCode()], {type: "text/plain;charset=utf-8"});
+        saveAs(blob, `${this.fileName}.${this.fileType}`);
+      }
+    })
   }
 
   private createFile(): void {
@@ -47,7 +77,6 @@ export default class Menu {
 
   private openCreateModal(): void {
     document.querySelector(".modal").classList.add("show");
-
   }
 
   private closeCreateModal(): void {

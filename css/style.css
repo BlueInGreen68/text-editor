@@ -152,8 +152,11 @@
 }
 
 .header__tabs {
-    margin-top: 0.5rem;
-    font-size: 1rem;
+
+}
+
+.tab__show {
+    border-bottom: 3px solid #0e7dd9!important;
 }
 
 .tabs__tab_active {
@@ -162,13 +165,17 @@
 }
 
 .tabs {
+    margin-top: 0.5rem;
+    font-size: 1rem;
     display: flex;
 }
 
 .tab {
-    padding: 0.7rem;
     color: #111;
-    cursor: pointer;
+}
+
+.tab__title {
+    padding: 0.7rem;
 }
 
 .tabs__tab {

@@ -2,90 +2,131 @@
 <html lang="en">
 
 <head>
-	<title>Редактор</title>
+    <title>Редактор</title>
 
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="css/style.css">
-	<style>
-		body {
-			position: fixed;
-			top: 0;
-			left: 0;
-			right: 0;
-			bottom: 0;
-			display: flex;
-			flex-wrap: wrap;
-			font-family: monospace;
-			background: #ffffff;
-			margin: 0;
-		}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            flex-wrap: wrap;
+            font-family: monospace;
+            background: #ffffff;
+            margin: 0;
+        }
 
-		.editor {
-			height: 100vh;
-			width: 100vw;
-			background: #ffffff;
+        .editor {
+            height: 100vh;
+            width: 100vw;
+            background: #ffffff;
+            display: none;
+            position: relative;
+            padding: 25px;
+            font-size: 16px;
+            color: #111;
+            border: 2px solid tomato;
+        }
+
+        .editor__show {
 			display: block;
-			position: relative;
-			padding: 25px;
-			font-size: 16px;
-			color: #111;
-			border: 2px solid tomato;
-		}
-	</style>
+        }
+    </style>
+    <style>
+        body {
+            font-family: Arial;
+        }
+
+        /* Style the tab */
+        .tab {
+            overflow: hidden;
+            border: 1px solid #ccc;
+            background-color: #f1f1f1;
+        }
+
+        /* Style the buttons inside the tab */
+        .tab button {
+            background-color: inherit;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            transition: 0.3s;
+            font-size: 17px;
+        }
+
+        /* Change background color of buttons on hover */
+        .tab button:hover {
+            background-color: #ddd;
+        }
+
+        /* Create an active/current tablink class */
+        .tab button.active {
+            background-color: #ccc;
+        }
+
+        /* Style the tab content */
+    </style>
 </head>
 
 <body>
-	<header class="main__header header">
-		<ul class="header__list list">
-			<li class="list__item list-item">
-				<select name="File" id="File" class="list-item__menu menu">
-					<option class="menu__option" value="new">Новый</option>
-					<option class="menu__option" value="save">Сохранить</option>
-				</select>
-				<label for="File" class="list-item__label">Файл</label>
-			</li>
-		</ul>
-		<section class="header__tabs tabs">
-			<div class="tabs__tab tab tabs__tab_add" onclick="newtab();">+</div>
-		</section>
-	</header>
-	<div class="editor" data-oncodejs>function foo(){}</div>
+<header class="main__header header">
+    <ul class="header__list list">
+        <li class="list__item list-item">
+            <select name="File" id="File" class="list-item__menu menu">
+                <option class="menu__option" value="new">Новый</option>
+                <option class="menu__option" value="save">Сохранить</option>
+            </select>
+            <label for="File" class="list-item__label">Файл</label>
+        </li>
+    </ul>
 
-	<!-- Модальное окно "Новый" -->
-	<div id="modalWin" class="modal">
-		<form action="" class="form" id="modalForm">
-			<fieldset class="form__area">
-				<legend class="form__legend">Выберите расширение нового файла:</legend>
-				<ul class="form__list">
-					<li class="menu__item">
-						<label for="title_1">
-							<input type="radio" id="title_1" name="fileType" value="index.html" checked>
-							HTML
-						</label>
-					</li>
-					<li class="menu__item">
-						<label for="title_2">
-							<input type="radio" id="title_2" name="fileType" value="styles.css">
-							CSS
-						</label>
-					</li>
-					<li class="menu__item">
-						<label for="title_3">
-							<input type="radio" id="title_3" name="fileType" value="script.js">
-							JS
-						</label>
-					</li>
-				</ul>
-				<input type="text" name="fileName" id="fileName">
-				<small class="error" id="error">Введите название файла</small>
-				<button class="form__accept">OK</button>
-				<button class="form__exit" type="button">X</button>
-			</fieldset>
-		</form>
-	</div>
-	<script src="components/index.js"></script>
-	<!--	<script src="script.js"></script>-->
+</header>
+<section class="tabs">
+    <div class="tab">
+    </div>
+</section>
+<div class="tab__content">
+</div>
+<!-- Модальное окно "Новый" -->
+<div id="modalWin" class="modal">
+    <form action="" class="form" id="modalForm">
+        <fieldset class="form__area">
+            <legend class="form__legend">Выберите расширение нового файла:</legend>
+            <ul class="form__list">
+                <li class="menu__item">
+                    <label for="title_1">
+                        <input type="radio" id="title_1" name="fileType" value="html" checked>
+                        HTML
+                    </label>
+                </li>
+                <li class="menu__item">
+                    <label for="title_2">
+                        <input type="radio" id="title_2" name="fileType" value="css">
+                        CSS
+                    </label>
+                </li>
+                <li class="menu__item">
+                    <label for="title_3">
+                        <input type="radio" id="title_3" name="fileType" value="js">
+                        JS
+                    </label>
+                </li>
+            </ul>
+            <input type="text" name="fileName" id="fileName">
+            <small class="error" id="error">Введите название файла</small>
+            <button class="form__accept">OK</button>
+            <button class="form__exit" type="button">X</button>
+        </fieldset>
+    </form>
+</div>
+<script src="components/index.js"></script>
 </body>
 
 </html>
