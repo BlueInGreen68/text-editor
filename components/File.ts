@@ -30,7 +30,7 @@ export default class File {
 
 
   private createTab(): void {
-    this.tab = new Tab(this.fileName)
+    this.tab = new Tab(this.fileName, this.fileType)
   }
 
 
@@ -38,6 +38,7 @@ export default class File {
     interface IFileContent {
       [index: string]: string,
     }
+
     const fileContent: IFileContent = {
       // <div class="editor" data-oncodejs-${this.fileName}>Script.js</div>
       "js": 'function foo()',
