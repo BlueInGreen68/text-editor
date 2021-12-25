@@ -4,11 +4,13 @@ export default class Tabs {
     js: '<button class="tablinks" name="London">London</button>',
   }
   private fileName: string;
+  private fileType: string;
   private tabsContainerElement: HTMLElement;
   tabElement: HTMLElement;
 
-  constructor(fileName: string) {
+  constructor(fileName: string, fileType: string) {
     this.fileName = fileName;
+    this.fileType = fileType;
     this.tabsContainerElement = document.querySelector('.tabs');
     this.tabsContainerElement.insertAdjacentHTML('beforeend', this.createElementTab())
     this.tabElement = document.querySelector(`[data-tab-${this.fileName}]`)
@@ -18,7 +20,7 @@ export default class Tabs {
   }
 
   createElementTab() {
-    return `<div class="tab" data-tab-${this.fileName}> <button class="tablinks">${this.fileName}</button> </div>`
+    return `<div class="tab" data-tab-${this.fileName}> <button class="tablinks">${this.fileName}.${this.fileType}</button> </div>`
   }
 
   selectTab() {
